@@ -1,11 +1,14 @@
 <template>
-  <div class="todo-list">
+  <div class="todo-list" :class="{ checked: todo.checked }">
     <div class="description-content">
-      <i class="far fa-clock"></i>
-      <p class="description">{{ todo.description }}</p>
+      <i :class="todo.checked ? 'fas fa-check' : 'fas fa-clock'"></i>
+      <p class="description" :class="todo.checked ? 'scratched-line' : ''">{{ todo.description }}</p>
     </div>
     <div class="action">
-      <button class="btn-link">Concluído</button>
+      <button @click="$emit('toggle', todo)" class="btn-link">
+        <span v-if="todo.checked">Desmarcar</span>
+        <span v-else>Concluído</span>
+      </button>
       <button class="btn-link">Remover</button>
     </div>
   </div>
@@ -28,8 +31,8 @@ export default {
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  .description-content, .fa-clock, .action {
-    @apply text-gray-300;
+  .description-content, .action {
+    @apply text-gray-300 font-medium;
   }
 
   .description-content {
@@ -41,18 +44,22 @@ export default {
   }
 
   .btn-link {
-    @apply p-2 rounded-md cursor-pointer outline-none duration-300;
+    @apply p-2 rounded-md cursor-pointer outline-none duration-300 font-bold;
+  }
+
+  .btn-link:nth-child(1) {
+    @apply bg-green-500;
   }
 
   .btn-link:hover {
-    @apply transform -translate-y-1;
+    @apply transform translate-y-1;
   }
 
-  .btn-link:nth-child(2) {
-    @apply text-red-400 duration-300;
+  .checked {
+    @apply bg-green-500;
   }
 
-  .btn-link:nth-child(2):hover {
-    @apply bg-red-400 text-gray-300;
+  .scratched-line {
+    @apply line-through text-gray-500;
   }
 </style>

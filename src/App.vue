@@ -9,7 +9,7 @@
         </form>
       </header>
       <main class="todo-container">
-        <Todo v-for="t in todos" :key="t.id" :todo="t"/>
+        <Todo v-for="t in todos" :key="t.id" :todo="t" @toggle="toggleTodo"/>
       </main>
     </div>
   </div>
@@ -33,6 +33,13 @@ export default {
       todo.id = Date.now()
       this.todos.push(todo)
       this.todo = { checked: false }
+    },
+    toggleTodo(todo) {
+      const index = this.todos.findIndex(item => item.id === todo.id)
+      if (index > -1) {
+        const checked = !this.todos[index].checked
+        this.$set(this.todos, index, { ...this.todos[index], checked })
+      }
     }
   },
   components: {
@@ -43,11 +50,11 @@ export default {
 
 <style lang="postcss" scoped>
   #app {
-    @apply bg-gray-800 w-screen h-screen pt-4 justify-center;
+    @apply bg-gray-900 w-screen h-screen pt-4 justify-center;
   }
   
   .bg {
-    @apply bg-gray-800 h-auto;
+    @apply bg-gray-900 h-auto;
   }
   
   .todo-logo {
@@ -72,7 +79,11 @@ export default {
   }
 
   .add-todo {
-    @apply bg-gray-300 text-gray-800;
+    @apply bg-gray-300 text-gray-800 duration-300;
+  }
+  
+  .add-todo:hover {
+    @apply transform translate-y-1 bg-green-500 text-gray-300;
   }
 
   .todo-container {
