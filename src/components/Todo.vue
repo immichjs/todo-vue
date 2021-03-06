@@ -1,102 +1,58 @@
 <template>
-  <div>
-    <header class="user-container">
-      <form @submit.prevent="addTodo(todo)">
-        <input type="text" class="todo-text" placeholder="Novo todo" v-model="todo.description">
-        <button class="add-todo">Adicionar</button>
-      </form>
-    </header>
-    <main class="todo-container">
-        <div v-for="t in todos" :key="t.id">
-          <div class="todo-list">
-            <div class="description-content">
-              <i class="far fa-clock"></i>
-              <p class="description">{{ t.description }}</p>
-            </div>
-            <div class="action">
-              <button class="btn-link">Concluído</button>
-              <button class="btn-link">Remover</button>
-            </div>
-        </div>
-      </div>
-    </main>
+  <div class="todo-list">
+    <div class="description-content">
+      <i class="far fa-clock"></i>
+      <p class="description">{{ todo.description }}</p>
+    </div>
+    <div class="action">
+      <button class="btn-link">Concluído</button>
+      <button class="btn-link">Remover</button>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
-  data() {
-    return {
-      todos: [],
-      todo: {
-        checked: false
-      }
-    }
-  },
-
-  methods: {
-    addTodo(todo) {
-      todo.id = Date.now()
-      
-      this.todos.push(todo)
-      this.todo = { checked: false }
+  props: {
+    todo: {
+      type: Object,
+      required: true
     }
   }
 }
 </script>
 
 <style lang="postcss" scoped>
-  .user-container {
-    @apply flex w-full box-border justify-center;
-  }
-
-  .user-container form {
-    @apply flex w-96;
-  }
-
-  .todo-text, .add-todo {
-    @apply p-3 outline-none rounded-md font-medium;
-  }
-
-  .todo-text {
-    @apply text-gray-300 font-medium w-full mr-1.5;
-    background-color: rgba(255, 255, 255, 0.1);
-  }
-
-  .description-content {
-    @apply flex items-center text-xl p-2 break-all;
-  }
-
-  .action {
-    @apply flex justify-end gap-2 p-3 border-b-2 border-gray-800;
-  }
-
-  .btn-link {
-    @apply p-2 rounded-md cursor-pointer outline-none;
-  }
-
-  .btn-link:nth-child(2) {
-    @apply text-red-400;
-  }
-
-  .add-todo {
-    @apply bg-gray-300 text-gray-800;
-  }
-  
-  .todo-container {
-    @apply flex justify-center w-96 my-3 flex-wrap;
-  }
-
   .todo-list {
-    @apply p-3 w-96 rounded-md mt-3;
+    @apply p-3 w-96 rounded-md mt-4;
     background-color: rgba(255, 255, 255, 0.1);
   }
 
-  .description-content, .title-content, .action {
+  .description-content, .fa-clock, .action {
     @apply text-gray-300;
   }
 
-  .fa-clock {
-    @apply text-white m-3;
+  .description-content {
+    @apply flex gap-2 items-center text-xl p-2 break-all;
+  }
+
+  .action {
+    @apply flex justify-end gap-2 p-3 border-gray-800;
+  }
+
+  .btn-link {
+    @apply p-2 rounded-md cursor-pointer outline-none duration-300;
+  }
+
+  .btn-link:hover {
+    @apply transform -translate-y-1;
+  }
+
+  .btn-link:nth-child(2) {
+    @apply text-red-400 duration-300;
+  }
+
+  .btn-link:nth-child(2):hover {
+    @apply bg-red-400 text-gray-300;
   }
 </style>
