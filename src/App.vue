@@ -18,6 +18,6 @@ export default {
 
 <style lang="postcss" scoped>
   #app {
-    @apply bg-black w-screen h-screen pt-10;
+    @apply flex bg-black w-screen h-screen pt-10 justify-center;
   }
 </style>

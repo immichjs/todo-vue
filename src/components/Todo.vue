@@ -10,6 +10,7 @@
         <div v-for="t in todos" :key="t.id">
           <div class="todo-list">
             <div class="description-content">
+              <i class="far fa-clock"></i>
               <p class="description">{{ t.description }}</p>
             </div>
             <div class="action">
@@ -63,7 +64,7 @@ export default {
   }
 
   .description-content {
-    @apply flex items-center justify-center text-xl mb-1 p-2;
+    @apply flex items-center text-xl p-2 break-all;
   }
 
   .action {
@@ -73,8 +74,8 @@ export default {
   .btn-link {
     @apply p-2 rounded-md cursor-pointer outline-none;
   }
-  
-  .btn-link:nth-child(n+2) {
+
+  .btn-link:nth-child(2) {
     @apply text-red-400;
   }
 
@@ -83,15 +84,19 @@ export default {
   }
   
   .todo-container {
-    @apply flex justify-center w-96 my-3;
+    @apply flex justify-center w-96 my-3 flex-wrap;
   }
 
   .todo-list {
-    @apply p-3 w-96 rounded-md;
+    @apply p-3 w-96 rounded-md mt-3;
     background-color: rgba(255, 255, 255, 0.1);
   }
 
   .description-content, .title-content, .action {
     @apply text-gray-300;
+  }
+
+  .fa-clock {
+    @apply text-white m-3;
   }
 </style>
