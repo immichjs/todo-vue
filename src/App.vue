@@ -30,9 +30,9 @@ export default {
   },
   methods: {
     addTodo(todo) {
-      todo.id = Date.now()
-      this.todos.push(todo)
-      this.todo = { checked: false }
+        todo.id = Date.now()
+        this.todos.push(todo)
+        this.todo = { checked: false }
     },
     toggleTodo(todo) {
       const index = this.todos.findIndex(item => item.id === todo.id)
