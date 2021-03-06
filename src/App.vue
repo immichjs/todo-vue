@@ -9,7 +9,7 @@
         </form>
       </header>
       <main class="todo-container">
-        <Todo v-for="t in todos" :key="t.id" :todo="t" @toggle="toggleTodo"/>
+        <Todo v-for="t in todos" :key="t.id" :todo="t" @toggle="toggleTodo" @remove="removeTodo"/>
       </main>
     </div>
   </div>
@@ -39,6 +39,12 @@ export default {
       if (index > -1) {
         const checked = !this.todos[index].checked
         this.$set(this.todos, index, { ...this.todos[index], checked })
+      }
+    },
+    removeTodo(todo) {
+      const index = this.todos.findIndex(item => item.id === todo.id)
+      if (index > -1) {
+        this.$delete(this.todos, index)
       }
     }
   },
@@ -80,10 +86,12 @@ export default {
 
   .add-todo {
     @apply bg-gray-300 text-gray-800 duration-300;
+    box-shadow: 0 4px 0 rgba(255, 255, 255, 0.6);
   }
   
   .add-todo:hover {
     @apply transform translate-y-1 bg-green-500 text-gray-300;
+    box-shadow: 0 4px 0 rgb(5, 150, 105);
   }
 
   .todo-container {

@@ -9,7 +9,7 @@
         <span v-if="todo.checked">Desmarcar</span>
         <span v-else>Concluído</span>
       </button>
-      <button class="btn-link">Remover</button>
+      <button class="btn-link" @click="$emit('remove', todo)">Remover</button>
     </div>
   </div>
 </template>
@@ -29,6 +29,7 @@ export default {
   .todo-list {
     @apply p-3 w-96 rounded-md mt-4;
     background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 0 rgba(255, 255, 255, 0.05);
   }
 
   .description-content, .action {
@@ -49,6 +50,7 @@ export default {
 
   .btn-link:nth-child(1) {
     @apply bg-green-500;
+    box-shadow: 0 3px 0 rgb(5, 150, 105);
   }
 
   .btn-link:hover {
