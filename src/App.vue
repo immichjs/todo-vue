@@ -4,7 +4,7 @@
       <header class="user-container">
         <img src="../public/to-do-list.svg" class="todo-logo">
         <form @submit.prevent="addTodo(todo)">
-          <input type="text" class="todo-text" placeholder="Adicionar novo todo" v-model="todo.description">
+          <input type="text" class="todo-text" placeholder="Adicionar um novo todo" v-model="todo.description">
           <button class="add-todo">Adicionar</button>
         </form>
       </header>
@@ -68,33 +68,39 @@ export default {
   }
 
   .user-container {
-    @apply grid w-full box-border justify-center;
+    @apply flex flex-col w-full pr-5 pl-5 sm:grid lg:justify-center;
   }
 
   .user-container form {
-    @apply flex w-96;
+    @apply grid gap-3 sm:flex;
   }
 
   .todo-text, .add-todo {
-    @apply p-3 outline-none rounded-md font-medium;
+    @apply p-5 outline-none rounded-md font-medium text-xl;
   }
 
   .todo-text {
-    @apply text-gray-300 font-medium w-full mr-4;
+    @apply text-gray-300 font-medium w-full lg:w-96;
     background-color: rgba(255, 255, 255, 0.1);
+    box-shadow: 0 4px 0 rgba(255, 255, 255, 0.05);
   }
 
   .add-todo {
-    @apply bg-gray-300 text-gray-800 duration-300;
+    @apply bg-gray-300 text-gray-800 duration-300 hover:bg-green-500 hover:text-gray-300 transform hover:translate-y-1;
     box-shadow: 0 4px 0 rgba(255, 255, 255, 0.6);
   }
   
   .add-todo:hover {
-    @apply transform translate-y-1 bg-green-500 text-gray-300;
     box-shadow: 0 4px 0 rgb(5, 150, 105);
   }
 
   .todo-container {
-    @apply flex justify-center items-center w-96 m-auto flex-wrap;
+    @apply flex justify-center items-center pr-5 pl-5 lg:m-auto lg:p-0 flex-wrap;
+  }
+
+  @media only screen and (min-width: 1024px) {
+    .todo-container {
+      width: 32.5rem;
+    }
   }
 </style>

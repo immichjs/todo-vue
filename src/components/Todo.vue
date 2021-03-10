@@ -27,9 +27,13 @@ export default {
 
 <style lang="postcss" scoped>
   .todo-list {
-    @apply p-3 w-96 rounded-md mt-4;
+    @apply p-3 mt-4 w-screen rounded-md;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 0 rgba(255, 255, 255, 0.05);
+  }
+
+  .todo-list:first-child {
+    @apply mt-8;
   }
 
   .description-content, .action {
@@ -41,20 +45,16 @@ export default {
   }
 
   .action {
-    @apply flex justify-end gap-2 p-3 border-gray-800;
+    @apply flex justify-end gap-2 p-3 border-gray-800 flex-wrap;
   }
 
   .btn-link {
-    @apply p-2 rounded-md cursor-pointer outline-none duration-300 font-bold;
+    @apply p-2 rounded-md cursor-pointer outline-none duration-300 font-bold transform hover:translate-y-1;
   }
 
   .btn-link:nth-child(1) {
     @apply bg-green-500;
     box-shadow: 0 3px 0 rgb(5, 150, 105);
-  }
-
-  .btn-link:hover {
-    @apply transform translate-y-1;
   }
 
   .checked {
