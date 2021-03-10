@@ -76,7 +76,7 @@ export default {
   }
 
   .todo-text, .add-todo {
-    @apply p-5 outline-none rounded-md font-medium text-xl;
+    @apply p-3 lg:p-5 outline-none rounded-md font-medium text-xl;
   }
 
   .todo-text {
