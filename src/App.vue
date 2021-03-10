@@ -86,7 +86,7 @@ export default {
   }
 
   .add-todo {
-    @apply bg-gray-300 text-gray-800 duration-300 hover:bg-green-500 hover:text-gray-300 transform hover:translate-y-1;
+    @apply bg-gray-300 text-gray-800 duration-300 lg:hover:bg-green-500 lg:hover:text-gray-300 transform lg:hover:translate-y-1;
     box-shadow: 0 4px 0 rgba(255, 255, 255, 0.6);
   }
   

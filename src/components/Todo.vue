@@ -49,12 +49,12 @@ export default {
   }
 
   .btn-link {
-    @apply p-2 rounded-md cursor-pointer outline-none duration-300 font-bold transform hover:translate-y-1;
+    @apply p-2 rounded-md cursor-pointer outline-none duration-300 font-bold transform lg:hover:translate-y-1;
   }
 
   .btn-link:nth-child(1) {
-    @apply bg-green-500;
-    box-shadow: 0 3px 0 rgb(5, 150, 105);
+    @apply bg-gray-300 text-gray-800;
+    box-shadow: 0 3px 0 #A0A3A9;
   }
 
   .checked {
