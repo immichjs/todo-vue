@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <div class="bg">
+    <div>
       <header class="user-container">
         <img src="../public/to-do-list.svg" class="todo-logo">
         <form @submit.prevent="addTodo(todo)">
@@ -9,7 +9,8 @@
         </form>
       </header>
       <main class="todo-container">
-        <Todo v-for="t in todos" :key="t.id" :todo="t" @toggle="toggleTodo" @remove="removeTodo"/>
+        <Todo v-for="t in todos" :key="t.id" :todo="t" @toggle="toggleTodo" @remove="removeTodo" />
+        <Modal @changeModal="modalVisible = false" :modalProp="modalVisible"/>
       </main>
     </div>
   </div>
@@ -17,6 +18,7 @@
 
 <script>
 import Todo from './components/Todo'
+import Modal from './components/Modal'
 
 export default {
   name: 'App',
@@ -25,7 +27,8 @@ export default {
       todos: [],
       todo: {
         checked: false
-      }
+      },
+      modalVisible: false
     }
   },
   methods: {
@@ -36,7 +39,7 @@ export default {
         this.todos.push(todo)
         this.todo = { checked: false }
       } else {
-        alert('É necessário escrever alguma coisa para adicionar um novo Todo.')
+        this.modalVisible = true
       }
     },
     toggleTodo(todo) {
@@ -51,10 +54,11 @@ export default {
       if (index > -1) {
         this.$delete(this.todos, index)
       }
-    }
+    },
   },
   components: {
-    Todo
+    Todo,
+    Modal,
   }
 }
 </script>
