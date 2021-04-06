@@ -4,7 +4,7 @@
       <header class="user-container">
         <img src="../public/to-do-list.svg" class="todo-logo">
         <form @submit.prevent="addTodo(todo)">
-          <input type="text" class="todo-text" placeholder="Adicionar um novo todo" v-model="todo.description">
+          <input type="text" class="todo-text" placeholder="Adicionar um novo todo" v-model="todo.description" ref="todoInput">
           <button class="add-todo">Adicionar</button>
         </form>
       </header>
@@ -30,9 +30,14 @@ export default {
   },
   methods: {
     addTodo(todo) {
+      const todoInput = this.$refs['todoInput'].value
+      if (todoInput && todoInput !== ' ') {
         todo.id = Date.now()
         this.todos.push(todo)
         this.todo = { checked: false }
+      } else {
+        alert('É necessário escrever alguma coisa para adicionar um novo Todo.')
+      }
     },
     toggleTodo(todo) {
       const index = this.todos.findIndex(item => item.id === todo.id)

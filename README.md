@@ -1,4 +1,5 @@
 # todo-vue
+![](https://i.imgur.com/0N5OZJs.png)
 
 ## Project setup
 ```
@@ -19,6 +20,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
