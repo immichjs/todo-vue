@@ -37,7 +37,7 @@ export default {
 
 <style lang="postcss" scoped>
 .overlay {
-    background-color: rgba(87, 87, 87, 0.8);
+    background-color: rgba(87, 87, 87, 0.2);
 }
 
 .slide-fade-enter-active {

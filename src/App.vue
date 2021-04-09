@@ -34,7 +34,7 @@ export default {
   methods: {
     addTodo(todo) {
       const todoInput = this.$refs['todoInput'].value
-      if (todoInput && todoInput !== ' ') {
+      if (todoInput || todoInput !== ' ') {
         todo.id = Date.now()
         this.todos.push(todo)
         this.todo = { checked: false }
@@ -51,9 +51,7 @@ export default {
     },
     removeTodo(todo) {
       const index = this.todos.findIndex(item => item.id === todo.id)
-      if (index > -1) {
-        this.$delete(this.todos, index)
-      }
+      if (index > -1) this.$delete(this.todos, index)
     },
   },
   components: {
