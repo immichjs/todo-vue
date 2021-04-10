@@ -27,13 +27,13 @@ export default {
 
 <style lang="postcss" scoped>
   .todo-list {
-    @apply p-3 mt-4 w-screen rounded-md;
+    @apply p-3 mt-4 w-auto rounded-md;
     background-color: rgba(255, 255, 255, 0.1);
     box-shadow: 0 4px 0 rgba(255, 255, 255, 0.05);
   }
 
   .todo-list:first-child {
-    @apply mt-8;
+    @apply mt-0;
   }
 
   .description-content, .action {
