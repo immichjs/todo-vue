@@ -58,7 +58,7 @@ export default {
   }
 
   .checked {
-    @apply bg-green-500;
+    @apply bg-green-600;
   }
 
   .scratched-line {
